@@ -1,0 +1,20 @@
+{
+  "id": "XD_UNITY_UI_EXPORT",
+  "name": "XdUnityUI export plugin",
+  "description": "XdUnityUI用ファイルを出力します",
+  "version": "0.9.0",
+  "host": {
+    "app": "XD",
+    "minVersion": "19.0.0"
+  },
+  "uiEntryPoints": [
+    {
+      "type": "menu",
+      "label": "XdUnityUI export",
+      "commandId": "exportXdUnityUICommand",
+      "shortcut": {
+        "win": "Ctrl+Shift+Alt+p"
+      }
+    }
+  ]
+}
