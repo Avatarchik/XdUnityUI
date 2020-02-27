@@ -1,0 +1,207 @@
+/*
+ デザイン要素はできるだけXDにやらせる
+ こちらで定義にするのはUnityでの挙動になるようにする
+
+ CSSパーサは以下のものを利用
+ https://jsfiddle.net/developit/vzkckrw4/
+ 制限： Style-Valueに{}があるとおかしくなる
+ */
+
+* {
+  layer: UI;
+}
+
+
+/*
+ BooleanGroupはImage化する
+ */
+[typeof="BooleanGroup"] {
+  image: true;
+}
+
+[typeof="RepeatGrid"] > * {
+  unity-name: "rg-child(${childIndex})";
+  layout-element: preferred;
+}
+
+/*
+ リピードグリッドの孫は、自動的に作成される子のサイズに追従する
+ */
+[typeof="RepeatGrid"] > * > * {
+  margin-fix: l r t b
+}
+
+/*
+ 横にならべる
+ */
+.layout-x {
+  layout-group: x;
+  layout-group-control-child-size: width height;
+  layout-group-child-force-expand: width;
+  content-size-fitter-horizontal-fit: preferred-size;
+}
+
+/*
+ 縦にならべる
+ */
+.layout-y {
+  layout-group: y;
+  layout-group-control-child-size: width height;
+  layout-group-child-force-expand: width;
+  content-size-fitter-vertical-fit: preferred-size;
+}
+
+/*
+ グリッド状にならべる 横に伸びる
+ */
+.layout-grid-x {
+  layout-group: grid;
+  layout-group-control-child-size: width height;
+  layout-group-child-force-expand: height;
+  layout-group-start-axis: y;
+  content-size-fitter-horizontal-fit: preferred-size;
+}
+
+/*
+ グリッド状にならべる 縦に伸びる
+ */
+.layout-grid-y {
+  layout-group: grid;
+  layout-group-control-child-size: width height;
+  layout-group-child-force-expand: width;
+  layout-group-start-axis: x;
+  content-size-fitter-vertical-fit: preferred-size;
+}
+
+/*
+ 親が自動レイアウトをもっている場合に
+ これ以下のグループが必要なPREFERREDサイズを設定する
+ */
+.layout-rect {
+  layout-element: preferred;
+}
+
+.viewport-xy {
+  viewport: true;
+  viewport-create-content: ".content";
+  rect-mask-twod: true;
+  scroll-rect: x y;
+  scroll-rect-content-class: ".content";
+}
+
+.viewport-layout-x {
+  viewport: true;
+  viewport-create-content: ".content.layout-x";
+  rect-mask-twod: true;
+  scroll-rect: x;
+  scroll-rect-content-class: ".content";
+}
+
+.viewport-layout-y {
+  viewport: true;
+  viewport-create-content: ".content.layout-y";
+  rect-mask-twod: true;
+  scroll-rect: y;
+  scroll-rect-content-class: ".content";
+}
+
+.viewport-grid-x {
+  viewport: true;
+  viewport-create-content: ".content.layout-grid-x";
+  rect-mask-twod: true;
+  scroll-rect: x;
+  scroll-rect-content-class: ".content";
+  scroll-rect-horizontal-scrollbar-class: ".scrollbar-x";
+}
+
+.viewport-grid-y {
+  viewport: true;
+  viewport-create-content: ".content.layout-grid-y";
+  rect-mask-twod: true;
+  scroll-rect: y;
+  scroll-rect-content-class: ".content";
+  scroll-rect-vertical-scrollbar-class: ".scrollbar-y";
+}
+
+.viewport-layout-x > .content {
+  conent-size-fitter: x;
+  rect-transform-anchor-offset-y: 0 1 0 0;
+}
+
+.viewport-layout-y > .content {
+  /*
+   親と横幅がぴったり重なる
+   anchor.min.x: 0
+   anchor.max.x: 1
+   offset.min.x: 0
+   offset.max.x: 0
+   */
+  rect-transform-anchor-offset-x: 0 1 0 0;
+}
+
+.viewport-grid-x > .content {
+  rect-transform-anchor-offset-x: 0 1 0 0;
+}
+
+.viewport-grid-y > .content {
+  rect-transform-anchor-offset-y: 0 1 0 0;
+}
+
+.scrollbar-x {
+  scrollbar: true;
+  scrollbar-direction: ltr;
+  scrollbar-handle-class: ".handle";
+}
+
+.scrollbar-x > .handle {
+  margin-fix: l r t b;
+}
+
+.scrollbar-y {
+  scrollbar: true;
+  scrollbar-direction: btt;
+  scrollbar-handle-class: ".handle";
+}
+
+.scrollbar-y > .handle {
+  margin-fix: l r t b;
+}
+
+.dots-scrollbar {
+  scrollbar: true;
+  scrollbar-direction: ltr;
+  layout-group: x;
+  layout-group-spacing-x: 9px;
+  content-size-fitter-vertical-fit: preferred-size;
+  content-size-fitter-horizontal-fit: preferred-size;
+}
+
+.toggle {
+  toggle: true;
+}
+
+.dots-scrollbar > .toggle {
+  layout-element: min;
+}
+
+.image {
+  image: true;
+}
+
+.comp-image {
+  image: true;
+  component: true;
+}
+
+.text {
+  text: true;
+}
+
+.textmp {
+  textmp: true;
+}
+
+
+.button {
+  button: true;
+}
