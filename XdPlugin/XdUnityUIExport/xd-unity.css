@@ -184,24 +184,23 @@
   layout-element: min;
 }
 
-.image {
-  image: true;
-}
-
 .comp-image {
   image: true;
   component: true;
 }
 
-.text {
+[tag-name='image'], [tag-name$='-image'], .image {
+  image: true;
+}
+
+[tag-name='text'], [tag-name$='-text'], .text {
   text: true;
 }
 
-.textmp {
+[tag-name='textmp'], [tag-name$='-textmp'], .textmp {
   textmp: true;
 }
 
-
-.button {
+[tag-name='button'], [tag-name$='-button'], .button {
   button: true;
 }
