@@ -24,7 +24,7 @@
 
 ### AdobeXD 用サンプルファイルを開く
 
-- (クローンしたフォルダ)/SampleXd/samples.xd を Unity で開いてください。
+- (クローンしたフォルダ)/SampleXd/samples.xd を AdobeXD で開いてください。
     - (クローンしたフォルダ)/SampleXd/Fonts/以下には samples.xd で利用しているフォントが入っています。
 
 ### AdobeXD プラグイン起動
