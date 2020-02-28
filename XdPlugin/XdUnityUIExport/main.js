@@ -3644,7 +3644,7 @@ async function getExportArtboards(selection) {
  * @param {RootNode} root
  * @returns {Promise<void>}
  */
-async function pluginExportXdUnityUICommand(selection, root) {
+async function exportXdUnityUICommand(selection, root) {
   let inputFolder
   let inputScale
   let errorLabel
@@ -4319,9 +4319,11 @@ async function testParse(selection, root) {
 module.exports = {
   // コマンドIDとファンクションの紐付け
   commands: {
-    exportXdUnityUICommand: pluginExportXdUnityUICommand,
+    exportXdUnityUICommand: exportXdUnityUICommand,
+    /*
     addResponsiveParam: pluginResponsiveParamName,
     addImageSizeFix: pluginAddImageSizeFix,
     testPlugin: testRendition,
+    */
   },
 }
