@@ -226,12 +226,13 @@ namespace XdUnityUI.Editor
         /// <returns></returns>
         private static Texture2D CreateReadabeTexture2D(Texture2D texture2d)
         {
+            // オプションをRenderTextureReadWrite.sRGBに変更した
             RenderTexture renderTexture = RenderTexture.GetTemporary(
                 texture2d.width,
                 texture2d.height,
                 0,
-                RenderTextureFormat.Default,
-                RenderTextureReadWrite.Linear);
+                RenderTextureFormat.ARGB32,
+                RenderTextureReadWrite.sRGB);
 
             Graphics.Blit(texture2d, renderTexture);
             RenderTexture previous = RenderTexture.active;
@@ -253,6 +254,8 @@ namespace XdUnityUI.Editor
             if (PreprocessTexture.SlicedTextures == null)
                 PreprocessTexture.SlicedTextures = new Dictionary<string, SlicedTexture>();
 
+            // Textureデータの書き出し
+            // 同じファイル名の場合書き込みしない
             string CheckWrite(string newPath, byte[] pngData)
             {
                 if (File.Exists(newPath))
