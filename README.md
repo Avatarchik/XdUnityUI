@@ -1,5 +1,7 @@
 # XdUnityUI
 
+![introduction](https://github.com/itouh2-i0plus/XdUnityUI/raw/develop/Documents/Media/introduction.gif)
+
 ## 概要
 
 - AdobeXD のアートボードを Unity 用 UI Prefab にコンバートします
