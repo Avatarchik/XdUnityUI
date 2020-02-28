@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1095,6 +1095,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6148287564809130036, guid: c9b88fa13a7d2a94d901f1fc06105e52, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6428794669246667692, guid: c9b88fa13a7d2a94d901f1fc06105e52, type: 3}
       propertyPath: m_Name
       value: TestResponsive
@@ -1103,7 +1107,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: c9b88fa13a7d2a94d901f1fc06105e52, type: 3}
 --- !u!224 &1625088971 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5651770517269183308, guid: c9b88fa13a7d2a94d901f1fc06105e52, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6148287564809130036, guid: c9b88fa13a7d2a94d901f1fc06105e52, type: 3}
   m_PrefabInstance: {fileID: 1625088970}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1661688540
