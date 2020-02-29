@@ -8,42 +8,38 @@
 
 ## クイックスタート
 
-### Git リポジトリをクローン
+1. インストール
+    - ダウンロードする場合
+        1. https://github.com/itouh2-i0plus/XdUnityUI/releases 
+        1. 最新バージョンの 「▶Assets」をクリックし XdUnityUI.unitypackage をダウンロードします。
+        1. XdUnityUI.unitypackage を Unityにインポートしてください。
+        1. Assets/I0plus/XdUnityUI フォルダが作成されます
+    - Gitリポジトリからクローンする場合
+        1. Git リポジトリをクローン
+            - https://github.com/itouh2-i0plus/XdUnityUI
+                - LFS を利用しています。Git クライアントによっては設定が必要となります。
+        1. (クローンフォルダ)/UnityProject を Unity で開きます
+            - Assets/I0plus/XdUnityUI 以下が、プラグインフォルダになっています
+            - 現在 Unity2019.3、UniversalRenderPipeline のプロジェクトとなっています。
+1. AdobeXD サンプルを 開く
+    - /Assets/I0plus/XdUnityUI/ForAdobeXD/sample.xd にあります。
+1. AdobeXD プラグイン起動
+    1. プラグインをインストールします。
+        - /Assets/I0plus/XdUnityUI/ForAdobeXD/XdUnityUIExport.xdxをダブルクリックします。
+    1. アートボード TestButton 内、ルート直下のレイヤー(例えば yellow-button)を選択状態にします。
+        - 当プラグインは出力時にこの操作が必ず必要になります。
+        - 参考：[Edit Context rules · Adobe XD Plugin Reference](https://adobexdplatform.com/plugin-docs/reference/core/edit-context.html)
+    1. プラグインメニューから、「XdUnityUI export plugin」をクリック、起動します。
+    1. 「Folder」の項目が出力フォルダ先指定です。(クローンしたフォルダ)/UnityProject/I0plus/XdUnityUI/Import フォルダを選択。
+    1. 「Export」をクリック。
+        - 出力時にエラーで止まるケースについて、当記事「問題が起こったとき」を参考にしてください。
 
-- https://github.com/itouh2-i0plus/XdUnityUI
-    - LFS を利用しています。Git クライアントによっては設定が必要となります。
-
-### Unity プロジェクトを開く
-
-- (クローンしたフォルダ)/UnityProject を Unity で開いてください。
-    - 現在 Unity2019.3、UniversalRenderPipeline のプロジェクトとなっています。
-
-### AdobeXD プラグインインストール
-
-- (クローンしたフォルダ)/XdPlugin/XdUnityUIExport.xdx をダブルクリックしてインストールしてください。
-
-### AdobeXD 用サンプルファイルを開く
-
-- (クローンしたフォルダ)/SampleXd/samples.xd を AdobeXD で開いてください。
-    - (クローンしたフォルダ)/SampleXd/Fonts/以下には samples.xd で利用しているフォントが入っています。
-
-### AdobeXD プラグイン起動
-
-- アートボード TestButton 内、ルート直下のレイヤー(例えば yellow-button)を選択状態にします。
-    - 当プラグインは出力時にこの操作が必ず必要になります。
-    - 参考：[Edit Context rules · Adobe XD Plugin Reference](https://adobexdplatform.com/plugin-docs/reference/core/edit-context.html)
-- プラグインメニューから、「XdUnityUI export plugin」をクリック、起動します。
-- 「Folder」の項目が出力フォルダ先指定です。(クローンしたフォルダ)/UnityProject/I0plus/XdUnityUI/Import フォルダを選択。
-- 「Export」をクリック。
-    - 出力時にエラーで止まるケースについて、当記事「問題が起こったとき」を参考にしてください。
-
-### Unity で動作確認
-
-- Unity をアクティブにするとコンバートが開始されます。
-- 作成された Prefab は Assets/I0plus/CreatedPrefabs に配置されます。
-- 作成された UI 画像は Assets/I0plus/CreatedSprites に配置されます。
-    - Slice 処理されています。
-- できた Prefab を Canvas 以下に配置します。
+1. Unity コンバート
+    - Unity ウィンドウをアクティブにするとコンバートが開始されます。
+    - 作成された Prefab は Assets/I0plus/CreatedPrefabs に配置されます。
+    - 作成された UI 画像は Assets/I0plus/CreatedSprites に配置されます。
+        - Slice 処理されています。
+    - できた Prefab を Canvas 以下に配置します。
 
 ## 動作条件
 
