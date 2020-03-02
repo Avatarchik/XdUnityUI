@@ -176,10 +176,6 @@
   content-size-fitter-horizontal-fit: preferred-size;
 }
 
-.toggle {
-  toggle: true;
-}
-
 .dots-scrollbar > .toggle {
   layout-element: min;
 }
@@ -189,7 +185,7 @@
   component: true;
 }
 
-[tag-name='image'], [tag-name$='-image'], .image {
+[tag-name='image'], [tag-name$='-image'], .image, [class$="-image"] {
   image: true;
 }
 
@@ -203,4 +199,25 @@
 
 [tag-name='button'], [tag-name$='-button'], .button {
   button: true;
+  button-transition: color-tint;
+  button-transition-target-graphic-class: ".target-image";
+  button-transition-highlighted-sprite-class: ".highlighted-image";
+  button-transition-pressed-sprite-class: ".pressed-image";
+  button-transition-selected-sprite-class: ".selected-image";
+  button-transition-disabled-sprite-class: ".disabled-image";
+}
+
+[tag-name$="-toggle"], [id$="-toggle"], .toggle {
+  toggle: true;
+  toggle-transition: color-tint;
+  toggle-transition-target-graphic-class: ".target-image";
+  toggle-transition-highlighted-sprite-class: ".highlighted-image";
+  toggle-transition-pressed-sprite-class: ".pressed-image";
+  toggle-transition-selected-sprite-class: ".selected-image";
+  toggle-transition-disabled-sprite-class: ".disabled-image";
+  toggle-graphic-class: ".check-image"; /* ONのときのチェック画像 */
+}
+
+.no-slice {
+  image-slice: false;
 }

@@ -2103,7 +2103,8 @@ function addClassNames(json, node) {
 
   const classNames = []
   for (let className of parsedName.classNames) {
-    classNames.push(removeDotStart(className)) // ドットをとる
+    // クラスなので、「.」をつけるようにする
+    classNames.push('.' + className)
   }
 
   Object.assign(json, {
@@ -2319,7 +2320,7 @@ function addScrollRect(json, style) {
   })
 
   const scrollRectJson = json['scroll_rect']
-  const content_class = removeDotStart(
+  const content_class = removeStartDot(
     style.first(STYLE_SCROLL_RECT_CONTENT_CLASS),
   )
   if (content_class) {
@@ -2327,7 +2328,7 @@ function addScrollRect(json, style) {
       content_class,
     })
   }
-  const vertical_scrollbar_class = removeDotStart(
+  const vertical_scrollbar_class = removeStartDot(
     style.first(STYLE_SCROLL_RECT_VERTICAL_SCROLLBAR_CLASS),
   )
   if (vertical_scrollbar_class) {
@@ -2335,7 +2336,7 @@ function addScrollRect(json, style) {
       vertical_scrollbar_class,
     })
   }
-  const horizontal_scrollbar_class = removeDotStart(
+  const horizontal_scrollbar_class = removeStartDot(
     style.first(STYLE_SCROLL_RECT_HORIZONTAL_SCROLLBAR_CLASS),
   )
   if (horizontal_scrollbar_class) {
@@ -2789,7 +2790,7 @@ async function createGroup(json, node, root, funcForEachChild) {
 /**
  * @param {string} name
  */
-function removeDotStart(name) {
+function removeStartDot(name) {
   if (name == null) return null
   if (name.startsWith('.')) {
     name = name.substring(1)
@@ -2822,7 +2823,7 @@ async function createScrollbar(json, node, funcForEachChild) {
   }
   let handle_class = style.first(STYLE_SCROLLBAR_HANDLE_CLASS)
   if (handle_class != null) {
-    handle_class = removeDotStart(handle_class)
+    handle_class = removeStartDot(handle_class)
     Object.assign(scrollbarJson, {
       handle_class,
     })
@@ -4005,7 +4006,7 @@ async function testRendition(selection, root) {
   const folder = await fs.getFolder()
   if (!folder) return console.log('User canceled folder picker.')
   const file = await folder.createFile('rendition.png')
-  let node = selection.items[0];
+  let node = selection.items[0]
   console.log(node.name)
   let renditionSettings = [
     {
