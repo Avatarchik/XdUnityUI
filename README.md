@@ -9,37 +9,47 @@
 ## クイックスタート
 
 1. インストール
-    - ダウンロードする場合
-        1. https://github.com/itouh2-i0plus/XdUnityUI/releases 
-        1. 最新バージョンの 「▶Assets」をクリックし XdUnityUI.unitypackage をダウンロードします。
-        1. XdUnityUI.unitypackage を Unityにインポートしてください。
-        1. Assets/I0plus/XdUnityUI フォルダが作成されます
-    - Gitリポジトリからクローンする場合
-        1. Git リポジトリをクローン
-            - https://github.com/itouh2-i0plus/XdUnityUI
-                - LFS を利用しています。Git クライアントによっては設定が必要となります。
-        1. (クローンフォルダ)/UnityProject を Unity で開きます
-            - Assets/I0plus/XdUnityUI 以下が、プラグインフォルダになっています
-            - 現在 Unity2019.3、UniversalRenderPipeline のプロジェクトとなっています。
+     - ダウンロードする場合
+         1. https://github.com/itouh2-i0plus/XdUnityUI/releases
+         1. 最新バージョンの 「▶Assets」をクリックし XdUnityUI.unitypackage をダウンロードします。
+         1. XdUnityUI.unitypackage を Unity にインポートしてください。
+         1. Assets/I0plus/XdUnityUI フォルダが作成されます
+     - Git リポジトリからクローンする場合
+         1. Git リポジトリをクローン
+                - https://github.com/itouh2-i0plus/XdUnityUI
+                    - LFS を利用しています。Git クライアントによっては設定が必要となります。
+         1. (クローンフォルダ)/UnityProject を Unity で開きます
+                - Assets/I0plus/XdUnityUI 以下が、プラグインフォルダになっています
+                - 現在 Unity2019.3、UniversalRenderPipeline のプロジェクトとなっています。
 1. AdobeXD サンプルを 開く
-    - /Assets/I0plus/XdUnityUI/ForAdobeXD/sample.xd にあります。
+     - /Assets/I0plus/XdUnityUI/ForAdobeXD/samples.xd にあります。
 1. AdobeXD プラグイン起動
-    1. プラグインをインストールします。
-        - /Assets/I0plus/XdUnityUI/ForAdobeXD/XdUnityUIExport.xdxをダブルクリックします。
-    1. アートボード TestButton 内、ルート直下のレイヤー(例えば yellow-button)を選択状態にします。
-        - 当プラグインは出力時にこの操作が必ず必要になります。
-        - 参考：[Edit Context rules · Adobe XD Plugin Reference](https://adobexdplatform.com/plugin-docs/reference/core/edit-context.html)
-    1. プラグインメニューから、「XdUnityUI export plugin」をクリック、起動します。
-    1. 「Folder」の項目が出力フォルダ先指定です。(クローンしたフォルダ)/UnityProject/I0plus/XdUnityUI/Import フォルダを選択。
-    1. 「Export」をクリック。
-        - 出力時にエラーで止まるケースについて、当記事「問題が起こったとき」を参考にしてください。
+
+     1. プラグインをインストールします。 - /Assets/I0plus/XdUnityUI/ForAdobeXD/XdUnityUIExport.xdx をダブルクリックします。
+     1. アートボード TestButton 内、ルート直下のレイヤー(例えば yellow-button)を選択状態にします。 - 当プラグインは出力時にこの操作が必ず必要になります。 - 参考：[Edit Context rules · Adobe XD Plugin Reference](https://adobexdplatform.com/plugin-docs/reference/core/edit-context.html)
+     1. プラグインメニューから、「XdUnityUI export plugin」をクリック、起動します。
+     1. 「Folder」の項目が出力フォルダ先指定です。(クローンしたフォルダ)/UnityProject/I0plus/XdUnityUI/Import フォルダを選択。
+     1. 「Export」をクリック。 - 出力時にエラーで止まるケースについて、当記事「問題が起こったとき」を参考にしてください。
 
 1. Unity コンバート
-    - Unity ウィンドウをアクティブにするとコンバートが開始されます。
-    - 作成された Prefab は Assets/I0plus/CreatedPrefabs に配置されます。
-    - 作成された UI 画像は Assets/I0plus/CreatedSprites に配置されます。
-        - Slice 処理されています。
-    - できた Prefab を Canvas 以下に配置します。
+     - Unity ウィンドウをアクティブにするとコンバートが開始されます。
+     - 作成された Prefab は Assets/I0plus/CreatedPrefabs に配置されます。
+     - 作成された UI 画像は Assets/I0plus/CreatedSprites に配置されます。
+         - Slice 処理されています。
+     - できた Prefab を Canvas 以下に配置します。
+
+## ChangeLog
+
+### [v0.3.1] - 2020-03-02
+
+TextMeshPro サンプル追加、説明修正
+Button サンプル追加
+Toggle サンプル追加
+README.md 修正
+
+### [v0.3] - 2020-03-01
+
+- unitypackage からのインストール方法追記
 
 ## 動作条件
 
@@ -56,6 +66,7 @@
 - AdobeXD レイヤー名に対して、コンバートルールが適応されます。
     - コンバートルールは CSS の記述によって定義されています。
     - json ファイルと画像ファイルが出力されます。
+    - 出力画像は、指定が無い限りスライス処理されます。
 - 出力ファイルを Unity プロジェクト、XdUnityUI/Import フォルダに書き込むことで Unity でのコンバート処理が行われます。
 - 指定されたフォルダに Prefab と Sprite が出力されます。
 
@@ -72,6 +83,7 @@
     window-image
     icon-image
     ```
+
 - 説明
     - レイヤー、グループレイヤーに上記のような名前が付いていた場合、そのレイヤーと子レイヤーを合成した画像を生成し、Unity 上で Image コンポーネントが付与されます。
 - 注意
@@ -80,7 +92,6 @@
 #### button
 
 - 例
-    
     ```
     button
     start-button
@@ -92,6 +103,7 @@
     - 子レイヤーに image レイヤーが必要です。
 
 #### text
+
 - 例
 
     ```
@@ -99,6 +111,7 @@
     title-text
     name-text
     ```
+
 - 説明
     - テキストレイヤーに上記のような名前をつけることで Unity 上でも Text コンポーネントが 付与 されます。
 - 注意
@@ -106,6 +119,7 @@
     - AdobeXD と Unity では、デザイン上の差異があります。(例：カーニング)
 
 #### textmp
+
 - 例
 
     ```
@@ -113,10 +127,14 @@
     title-textmp
     name-textmp
     ```
+
 - 説明
     - テキストレイヤーに上記のような名前をつけることで Unity 上でも TextMeshPro コンポーネントが 付与 されます。
 - 注意
-    - AdobeXD で使用したフォントが Unity プロジェクト内、Assets/I0plus/XdUnityUI/Fonts/以下、.ttf か.otf で存在する必要があります。
+    - Project Settings > Player > Scripting Define SymbolsにTMP_PRESENTが必要です 
+    - AdobeXD で使用したフォントが Unity プロジェクト内、Assets/I0plus/XdUnityUI/Fonts/以下、TextMeshPro フォントアセット が必要です
+        - 例: AdobeXD で Open Sans フォント Regular を使用している場合
+            - TextMeshPro フォント、ファイル名「Open Sans-Regular SDF.asset」を探します
     - AdobeXD と Unity では、デザイン上の差異があります。(例：カーニング)
 
 - 追記予定
@@ -127,19 +145,10 @@
 
 ## 問題が起こったとき
 
-### Xd プラグイン
-
-#### コンバート中に失敗・中断され、再度エクスポートしたが、コンバート処理が実行されない
-
-- 原因
-
-    - 失敗したファイルへの上書きでは、Unity 側がファイルの更新を検知できないため。
-
-- 対応
-    - XdUnityUI/Import 内の\_XdUnityUIImport、\_XdUnityUIImport.meta ファイル以外を削除する。
-    - もう一度エキスポートする。
+### AdobeXD プラグイン
 
 #### 画像の書き出しに失敗する
+
 - 原因
     - AdobeXD 上の問題かもしれません。調査中です。
 - 対策
@@ -150,6 +159,7 @@
     5. 上記が成功した場合、プラグインからの出力も成功するようになります。
 
 #### レスポンシブパラメータが正確にコンバートされない
+
 - 原因
     - XD プラグイン実行時、アートボードのサイズを変更しレイヤーのサイズの変化をみてレスポンシブパラメータを取得しています。その際、リピードグリッド内レイヤー等、サイズが変わらないものはレスポンシブパラメータが確定できません。
 - 対策
@@ -158,23 +168,48 @@
     - AdobeXD Plugin API で、レスポンシブパラメータが取得できるようになりましたら対応します。
 
 ### Unity コンバータ
+
+#### コンバート処理が実行されない
+
+- 原因
+
+    - 失敗後のファイルへの上書きでは、Unity 側がファイルの更新を検知できないため。
+
+- 対応
+    - XdUnityUI/Import 内の\_XdUnityUIImport、\_XdUnityUIImport.meta ファイル以外を削除する。
+    - もう一度エキスポートする。
+
+
 #### 文字(Text、TextMeshPro)を扱おうとするとコンバートに失敗する
+
 - 原因
     - フォントが無い可能性があります。
 - 対策
     - Console に探そうとして見つからなかったフォントファイル名が出力されます
     - フォントファイルを場合によってはリネームして、XdUnityUI/Fonts ディレクトリ(\_XdUnityUIFonts ファイルがおいてあるディレクトリ)にコピーしてください。
+    
+#### コンバート時、TextMeshProのエラーが出力される
+- 原因
+    - Scripting Define SymbolsにTMP_PRESENTが無い
+- 対策
+    - Project Settings > Player > Scripting Define SymbolsにTMP_PRESENTを追記する
 
 ## より使いこなすために
 
 ### オリジナル変換ルール
 
-- 変換ルールCSSの変更
-    1. XdUnityUIExport.xdxをXdUnityUIExport.zipとリネーム
-    1. 解凍しxd-unity.cssファイルを変更
-    1. 再びZIP圧縮、拡張子をxdxに変更
-    1. プラグイン再インストール
-- 変換ルールCSSの説明
+- 変換ルール CSS の編集
+    - XDXファイルを変更する場合
+        1. XdUnityUIExport.xdx を XdUnityUIExport.zip とリネーム
+        1. 解凍し xd-unity.css ファイルを編集する
+        1. 再び ZIP 圧縮、拡張子を xdx に変更
+        1. プラグイン再インストール
+    - AdobeXD 開発フォルダに展開する場合
+        1. XdUnityUIExport.xdx を XdUnityUIExport.zip とリネーム
+        1. 解凍しフォルダをAdobeXD開発フォルダ(プラグイン>開発版>開発フォルダーを表示)にコピーする
+        1. xd-unity.cssを編集
+        1. プラグイン再読み込み(プラグイン>開発版>再読み込み)
+- 変換ルール CSS の説明
     - 追記予定
 - アートボード毎の変換ルール
     - 追記予定

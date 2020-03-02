@@ -64,7 +64,7 @@ namespace XdUnityUI.Editor
             fullPath = EditorUtil.ToUnityPath(fileInfo.FullName);
             var sprite = AssetDatabase.LoadAssetAtPath<Sprite>(fullPath);
             Assert.IsNotNull(sprite,
-                $"[Baum2] sprite \"{spriteName}\" is not found fullPath:{fullPath}");
+                $"[XdUnityUI] sprite \"{spriteName}\" is not found fullPath:{fullPath}");
             return sprite;
         }
 
@@ -73,16 +73,16 @@ namespace XdUnityUI.Editor
             var font = AssetDatabase.LoadAssetAtPath<Font>(Path.Combine(fontRootPath, fontName) + ".ttf");
             if (font == null) font = AssetDatabase.LoadAssetAtPath<Font>(Path.Combine(fontRootPath, fontName) + ".otf");
             if (font == null) font = Resources.GetBuiltinResource<Font>(fontName + ".ttf");
-            Assert.IsNotNull(font, $"[Baum2] font \"{fontName}\" is not found");
+            Assert.IsNotNull(font, $"[XdUnityUI] font \"{fontName}\" is not found");
             return font;
         }
 
 #if TMP_PRESENT
         public TMP_FontAsset GetTMPFontAsset(string fontName, string style)
         {
-            var fontFileName = Path.Combine(fontRootPath, fontName) + "-" + style + "-SDF8.asset";
+            var fontFileName = Path.Combine(fontRootPath, fontName) + "-" + style + " SDF.asset";
             var font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(fontFileName);
-            Assert.IsNotNull(font, string.Format("[Baum2] TMP_FontAsset \"{0}\" is not found", fontFileName));
+            Assert.IsNotNull(font, string.Format("[XdUnityUI] TMP_FontAsset \"{0}\" is not found", fontFileName));
             return font;
         }
 #endif
