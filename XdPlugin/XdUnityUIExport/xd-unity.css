@@ -5,6 +5,12 @@
  CSSパーサは以下のものを利用
  https://jsfiddle.net/developit/vzkckrw4/
  制限： Style-Valueに{}があるとおかしくなる
+
+ セレクタに改行があるとエラーになる
+ */
+
+/*
+ idについてのルールは極力つけず、classにつけるようにするのが良いのではないだろうか
  */
 
 * {
@@ -207,7 +213,7 @@
   button-transition-disabled-sprite-class: ".disabled-image";
 }
 
-[tag-name$="-toggle"], [id$="-toggle"], .toggle {
+[tag-name$="toggle"], [tag-name$="-toggle"], .toggle {
   toggle: true;
   toggle-transition: color-tint;
   toggle-transition-target-graphic-class: ".target-image";
@@ -215,7 +221,12 @@
   toggle-transition-pressed-sprite-class: ".pressed-image";
   toggle-transition-selected-sprite-class: ".selected-image";
   toggle-transition-disabled-sprite-class: ".disabled-image";
-  toggle-graphic-class: ".check-image"; /* ONのときのチェック画像 */
+  toggle-graphic-class: ".checked-image"; /* ONのときのチェック画像 */
+}
+
+.transition-sprite-swap {
+  button-transition: sprite-swap;
+  toggle-transition: sprite-swap;
 }
 
 .no-slice {
