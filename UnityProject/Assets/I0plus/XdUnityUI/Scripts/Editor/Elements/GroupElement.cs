@@ -140,7 +140,7 @@ namespace XdUnityUI.Editor
             return componentContentSizeFitter;
         }
 
-    #if ODIN_INSPECTOR
+#if ODIN_INSPECTOR
         public static Tuple<MemberInfo, object, Type> GetProperty(Type type, object target, string propertyPath)
         {
             // 参考サイト：　https://stackoverflow.com/questions/366332/best-way-to-get-sub-properties-using-getproperty
@@ -277,7 +277,7 @@ namespace XdUnityUI.Editor
 
             var component = go.AddComponent(type);
         }
-    #endif
+#endif
 
         /**
          * 
