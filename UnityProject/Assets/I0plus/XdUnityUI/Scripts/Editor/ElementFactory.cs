@@ -36,7 +36,7 @@ namespace XdUnityUI.Editor
         public static Element Generate(Dictionary<string, object> json, Element parent)
         {
             var type = json.Get("type");
-            Assert.IsTrue(Generator.ContainsKey(type), "[Baum2] Unknown type: " + type);
+            Assert.IsTrue(Generator.ContainsKey(type), "[XdUnityUI] Unknown type: " + type);
             return Generator[type](json, parent);
         }
     }

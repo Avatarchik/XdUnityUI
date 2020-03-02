@@ -147,7 +147,7 @@ namespace XdUnityUI.Editor
                         // 変換後削除されるため、すべて変換された場合、空になる
                         if (Directory.EnumerateFileSystemEntries(fullPath).Any()) continue;
                         // 空であれば削除
-                        Debug.LogFormat("[Baum2] Delete Directory: {0}", EditorUtil.ToUnityPath(asset));
+                        Debug.LogFormat("[XdUnityUI] Delete Directory: {0}", EditorUtil.ToUnityPath(asset));
                         AssetDatabase.DeleteAsset(EditorUtil.ToUnityPath(asset));
                     }
 
@@ -188,7 +188,7 @@ namespace XdUnityUI.Editor
 
                         // 作成に成功した
                         Object.DestroyImmediate(go);
-                        Debug.Log($"[Baum2] Create Prefab: {savePath}", savedAsset);
+                        Debug.Log($"[XdUnityUI] Create Prefab: {savePath}", savedAsset);
                         // layout.jsonを削除する
                         AssetDatabase.DeleteAsset(EditorUtil.ToUnityPath(asset));
                     }
@@ -206,13 +206,13 @@ namespace XdUnityUI.Editor
             if (Directory.Exists(directoryFullPath))
             {
                 // 画像出力用フォルダに画像がのこっていればすべて削除
-                // Debug.LogFormat("[Baum2] Delete Exist Sprites: {0}", EditorUtil.ToUnityPath(directoryFullPath));
+                // Debug.LogFormat("[XdUnityUI] Delete Exist Sprites: {0}", EditorUtil.ToUnityPath(directoryFullPath));
                 foreach (var filePath in Directory.GetFiles(directoryFullPath, "*.png", SearchOption.TopDirectoryOnly))
                     File.Delete(filePath);
             }
             else
             {
-                // Debug.LogFormat("[Baum2] Create Directory: {0}", EditorUtil.ToUnityPath(directoryPath) + "/" + directoryName);
+                // Debug.LogFormat("[XdUnityUI] Create Directory: {0}", EditorUtil.ToUnityPath(directoryPath) + "/" + directoryName);
                 AssetDatabase.CreateFolder(EditorUtil.ToUnityPath(directoryPath), Path.GetFileName(directoryFullPath));
             }
         }
@@ -315,7 +315,7 @@ namespace XdUnityUI.Editor
 
                 return CheckWrite(newPath, pngData);
             }
-            // Debug.LogFormat("[Baum2] Slice: {0} -> {1}", EditorUtil.ToUnityPath(asset), EditorUtil.ToUnityPath(newPath));
+            // Debug.LogFormat("[XdUnityUI] Slice: {0} -> {1}", EditorUtil.ToUnityPath(asset), EditorUtil.ToUnityPath(newPath));
         }
 
         /**
