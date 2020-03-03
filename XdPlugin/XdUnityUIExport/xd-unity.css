@@ -25,6 +25,9 @@
   image: true;
 }
 
+/*
+ リピードグリッドの子は、Layout-elementを持つ
+ */
 [typeof="RepeatGrid"] > * {
   unity-name: "rg-child(${childIndex})";
   layout-element: preferred;
@@ -34,7 +37,10 @@
  リピードグリッドの孫は、自動的に作成される子のサイズに追従する
  */
 [typeof="RepeatGrid"] > * > * {
-  margin-fix: l r t b
+  /* margin-fix: l r t b*/
+  match-log: "RepeadGrid child-child";
+  rect-transform-anchor-offset-x: 0 1 0 0;
+  rect-transform-anchor-offset-y: 0 1 0 0;
 }
 
 /*

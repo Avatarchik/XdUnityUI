@@ -5,15 +5,18 @@
 ## 概要
 
 - AdobeXD のアートボードを Unity 用 UI Prefab にコンバートします。
+- ![GitHub](https://github.com/itouh2-i0plus/XdUnityUI)
 
-## クイックスタート
+## インストール
 
 1. インストール
      - ダウンロードする場合
          1. https://github.com/itouh2-i0plus/XdUnityUI/releases
          1. 最新バージョンの 「▶Assets」をクリックし XdUnityUI.unitypackage をダウンロードします。
          1. XdUnityUI.unitypackage を Unity にインポートしてください。
-         1. Assets/I0plus/XdUnityUI フォルダが作成されます
+         1. /Assets/I0plus/XdUnityUI フォルダが作成されます
+         1. AdobeXDプラグインをインストール
+            - /Assets/I0plus/XdUnityUI/ForAdobeXD/XdUnityUIExport.xdx をダブルクリックします。
      - Git リポジトリからクローンする場合
          1. Git リポジトリをクローン
                 - https://github.com/itouh2-i0plus/XdUnityUI
@@ -21,11 +24,15 @@
          1. (クローンフォルダ)/UnityProject を Unity で開きます
                 - Assets/I0plus/XdUnityUI 以下が、プラグインフォルダになっています
                 - 現在 Unity2019.3、UniversalRenderPipeline のプロジェクトとなっています。
+         1. AdobeXDプラグインをインストール
+            - /Assets/I0plus/XdUnityUI/ForAdobeXD/XdUnityUIExport.xdx をダブルクリックします。
+
+## クイックスタート
+
 1. AdobeXD サンプルを 開く
      - /Assets/I0plus/XdUnityUI/ForAdobeXD/samples.xd にあります。
-1. AdobeXD プラグイン起動
 
-     1. プラグインをインストールします。 - /Assets/I0plus/XdUnityUI/ForAdobeXD/XdUnityUIExport.xdx をダブルクリックします。
+1. AdobeXD プラグイン起動
      1. アートボード TestButton 内、ルート直下のレイヤー(例えば yellow-button)を選択状態にします。 - 当プラグインは出力時にこの操作が必ず必要になります。 - 参考：[Edit Context rules · Adobe XD Plugin Reference](https://adobexdplatform.com/plugin-docs/reference/core/edit-context.html)
      1. プラグインメニューから、「XdUnityUI export plugin」をクリック、起動します。
      1. 「Folder」の項目が出力フォルダ先指定です。(クローンしたフォルダ)/UnityProject/I0plus/XdUnityUI/Import フォルダを選択。
@@ -40,6 +47,12 @@
 
 ## ChangeLog
 
+### [v0.3.2] - 2020-03-02
+
+サンプル修正
+README.md 修正・追記
+XdPlugin/main.js コメント修正
+
 ### [v0.3.1] - 2020-03-02
 
 TextMeshPro サンプル追加、説明修正
@@ -49,6 +62,7 @@ README.md 修正
 
 ### [v0.3] - 2020-03-01
 
+- unitypackage の作成
 - unitypackage からのインストール方法追記
 
 ## 動作条件
@@ -145,7 +159,7 @@ README.md 修正
 
 ## 問題が起こったとき
 
-### AdobeXD プラグイン
+### AdobeXD プラグイン実行中
 
 #### 画像の書き出しに失敗する
 
@@ -158,16 +172,7 @@ README.md 修正
     4. 再度 Import フォルダに出力する。
     5. 上記が成功した場合、プラグインからの出力も成功するようになります。
 
-#### レスポンシブパラメータが正確にコンバートされない
-
-- 原因
-    - XD プラグイン実行時、アートボードのサイズを変更しレイヤーのサイズの変化をみてレスポンシブパラメータを取得しています。その際、リピードグリッド内レイヤー等、サイズが変わらないものはレスポンシブパラメータが確定できません。
-- 対策
-    - margin-fix プロパティをつかい、明示的に指定する。
-        - 例: start-button {margin-fix: t b l r}
-    - AdobeXD Plugin API で、レスポンシブパラメータが取得できるようになりましたら対応します。
-
-### Unity コンバータ
+### Unity コンバート実行中
 
 #### コンバート処理が実行されない
 
@@ -185,14 +190,36 @@ README.md 修正
 - 原因
     - フォントが無い可能性があります。
 - 対策
-    - Console に探そうとして見つからなかったフォントファイル名が出力されます
+    - Console に探そうとして見つからなかったフォントファイル名が出力されます。
     - フォントファイルを場合によってはリネームして、XdUnityUI/Fonts ディレクトリ(\_XdUnityUIFonts ファイルがおいてあるディレクトリ)にコピーしてください。
     
-#### コンバート時、TextMeshProのエラーが出力される
+#### TextMeshProのエラーが出力される
 - 原因
     - Scripting Define SymbolsにTMP_PRESENTが無い
 - 対策
-    - Project Settings > Player > Scripting Define SymbolsにTMP_PRESENTを追記する
+    - Project Settings > Player > Scripting Define SymbolsにTMP_PRESENTを追記します。
+        - TextMeshProパッケージをインストールしてもTMP_PRESENTが追記されない場合があるそうです。(v3.0?未確認)
+
+### コンバート結果
+
+#### レスポンシブパラメータが正確にコンバートされない
+
+- 原因1
+    - アートボードの「レスポンシブサイズを変更」がONになっていない
+- 対策1
+    - アートボードを選択し、「レイアウト」>「レスポンシブサイズを変更」をONにしてください。
+- 原因2
+    - AdobeXD プラグイン実行時、アートボードのサイズを変更しレイヤーのサイズの変化をみてレスポンシブパラメータを取得しています。その際、リピードグリッド内レイヤー等、サイズが変わらないものはレスポンシブパラメータが確定できません。
+- 対策2
+    - margin-fix プロパティをつかい、明示的に指定してください。
+        - 例: start-button {margin-fix: t b l r}
+    - AdobeXD Plugin API で、レスポンシブパラメータが取得できるようになりましたら対応します。
+
+#### 背景のイメージコンポーネントがいらない
+- 原因
+    - アートボードの背景が設定してある
+- 対策
+    - アートボードを選択し、「アピアランス」>「塗り」のチェックを外してください。
 
 ## より使いこなすために
 
