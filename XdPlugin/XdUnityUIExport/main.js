@@ -1446,6 +1446,7 @@ function calcRectTransform(node, hashBounds, calcDrawBounds = true) {
     offsetMax.x = 0
   }
 
+  // 横幅が固定されている
   if (styleFixWidth) {
     if (styleFixLeft === true) {
       anchorMax.x = anchorMin.x
@@ -1545,8 +1546,11 @@ function makeResponsiveBounds(root) {
 
   const rootWidth = root.globalBounds.width
   const rootHeight = root.globalBounds.height
-  const resizePlusWidth = -100
-  const resizePlusHeight = -100
+  // リサイズは大きくなるほうでする
+  // リピートグリッドが小さくなったとき、みえなくなるものがでてくる可能性がある
+  // そうなると、リサイズ前後での比較ができなくなる
+  const resizePlusWidth = 100
+  const resizePlusHeight = 100
 
   // rootのリサイズ
   const viewportHeight = root.viewportHeight // viewportの高さの保存
@@ -2022,7 +2026,7 @@ function addCanvasGroup(json, node, style) {
  * @param json
  * @param style
  */
-function addRectTransformAnchorOffsetX(json, style) {
+function addRectTransformAnchorOffsetXY(json, style) {
   if (!style) return
   // RectTransformの値がない場合、作成する
   //TODO: 初期値はいらないだろうか
@@ -2643,14 +2647,14 @@ async function createContent(style, json, node, funcForEachChild, root) {
   let offsetMax = { x: contentWidth + contentX, y: -contentY }
   Object.assign(contentJson, {
     fix: contentStyleFix,
-    pivot: pivot, // ここのPivotはX,Yで渡す　他のところは文字列になっている
+    pivot, // ContentのPivotはX,Yで渡す　他のところは文字列になっている
     anchor_min: anchorMin,
     anchor_max: anchorMax,
     offset_min: offsetMin,
     offset_max: offsetMax,
   })
 
-  addRectTransformAnchorOffsetX(contentJson, contentStyle) // anchor設定を上書きする
+  addRectTransformAnchorOffsetXY(contentJson, contentStyle) // anchor設定を上書きする
 
   addContentSizeFitter(contentJson, contentStyle)
   addLayer(contentJson, contentStyle)
@@ -2776,6 +2780,7 @@ async function createGroup(json, node, root, funcForEachChild) {
   // 基本
   addActive(json, style)
   addDrawRectTransform(json, node)
+  addRectTransformAnchorOffsetXY(json, style) // anchor設定を上書きする
   addLayer(json, style)
   addState(json, style)
   addClassNames(json, node)
@@ -2823,7 +2828,7 @@ async function createScrollbar(json, node, funcForEachChild) {
   }
   let handle_class = style.first(STYLE_SCROLLBAR_HANDLE_CLASS)
   if (handle_class != null) {
-    handle_class = removeStartDot(handle_class)
+    handle_class = handle_class
     Object.assign(scrollbarJson, {
       handle_class,
     })
