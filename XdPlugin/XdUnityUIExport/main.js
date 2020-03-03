@@ -1446,6 +1446,7 @@ function calcRectTransform(node, hashBounds, calcDrawBounds = true) {
     offsetMax.x = 0
   }
 
+  // 横幅が固定されている
   if (styleFixWidth) {
     if (styleFixLeft === true) {
       anchorMax.x = anchorMin.x
@@ -2643,7 +2644,7 @@ async function createContent(style, json, node, funcForEachChild, root) {
   let offsetMax = { x: contentWidth + contentX, y: -contentY }
   Object.assign(contentJson, {
     fix: contentStyleFix,
-    pivot: pivot, // ここのPivotはX,Yで渡す　他のところは文字列になっている
+    pivot, // ContentのPivotはX,Yで渡す　他のところは文字列になっている
     anchor_min: anchorMin,
     anchor_max: anchorMax,
     offset_min: offsetMin,
